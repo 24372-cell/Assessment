@@ -16,21 +16,21 @@ def show_songs():
             
             if choice == "1":
                 genre = input("Enter genre: ")
-                sql = "SELECT * FROM Music WHERE genre = ?;"
+                sql = "SELECT title, artist, duration FROM Music WHERE genre = ?;"
                 values = (genre,)
 
             elif choice == "2":
-                 artist = input('Enter artist: ')
-                sql = "SELECT * FROM Music WHERE artist = ?;"
+                artist = input('Enter artist: ')
+                sql = "SELECT title, artist, duration FROM Music WHERE artist = ?;"
                 values = (artist,)
             
-            elif choice == "3"
+            elif choice == "3":
                 try:
                     duration = float(input('Minimum duration: '))
                 except:
                     print("Invalid input")
                     continue 
-                sql = "SELECT * FROM Music WHERE duration > ?;"
+                sql = "SELECT title, artist, duration FROM Music WHERE duration > ?;"
                 values = (duration,)
             
             cursor.execute(sql, values)

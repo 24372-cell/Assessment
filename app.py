@@ -32,6 +32,13 @@ def show_songs():
                     continue 
                 sql = "SELECT title, artist, duration FROM Music WHERE duration > ?;"
                 values = (duration,)
+
+            elif choice =="4":
+                break
+
+            else:
+                print("Invalid choice")
+                continue
             
             cursor.execute(sql, values)
             results = cursor.fetchall()
@@ -45,4 +52,3 @@ def show_songs():
 
 if __name__ == "__main__":
     show_songs()
-    

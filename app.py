@@ -33,7 +33,8 @@ def show_songs():
                 sql = "SELECT title, artist, duration FROM Music WHERE duration > ?;"
                 values = (duration,)
 
-            elif choice =="4":
+            elif choice == "4":
+                print("Exiting program...")
                 break
 
             else:

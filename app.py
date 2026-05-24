@@ -1,7 +1,9 @@
+#import data
 import sqlite3
 
 DATABASE = 'music.db'
 
+#Menu
 def show_songs():
     with sqlite3.connect(DATABASE) as db:
         cursor = db.cursor()
@@ -12,8 +14,10 @@ def show_songs():
             print("3. Search by duration")
             print("4. Exit")
 
+#ask for choice
             choice = input("Choose option: ")
-            
+
+#Ask for specification            
             if choice == "1":
                 genre = input("Enter genre: ")
                 sql = "SELECT title, artist, duration FROM Music WHERE genre = ?;"
@@ -40,7 +44,8 @@ def show_songs():
             else:
                 print("Invalid choice")
                 continue
-            
+
+#print results            
             cursor.execute(sql, values)
             results = cursor.fetchall()
 

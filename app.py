@@ -20,12 +20,12 @@ def show_songs():
 #Ask for specification            
             if choice == "1":
                 genre = input("Enter genre: ")
-                sql = "SELECT title, artist, duration FROM Music WHERE genre = ?;"
+                sql = "SELECT Music.title, Artists.artist_name, Music.duration FROM Music JOIN Artists ON Music.artist = Artists.artist_name WHERE LOWER(Music.genre) = LOWER(?);"
                 values = (genre,)
 
             elif choice == "2":
                 artist = input('Enter artist: ')
-                sql = "SELECT title, artist, duration FROM Music WHERE artist = ?;"
+                sql = "SELECT Music.title, Artists.artist_name, Music.duration FROM Music JOIN Artists ON Music.artist = Artists.artist_name WHERE LOWER(Artists.artist_name) = LOWER(?);"
                 values = (artist,)
             
             elif choice == "3":
@@ -34,7 +34,7 @@ def show_songs():
                 except:
                     print("Invalid input")
                     continue 
-                sql = "SELECT title, artist, duration FROM Music WHERE duration > ?;"
+                sql = "SELECT Music.title, Artists.artist_name, Music.duration FROM Music JOIN Artists ON Music.artist = Artists.artist_name WHERE Music.duration > ?;"
                 values = (duration,)
 
             elif choice == "4":
